@@ -83,4 +83,7 @@ laptop_trans = laptop_copy[::-1]
 convert_array_to_image(laptop_trans, 'laptop_trans_image')
 
 
-
+# invert the colors
+laptop_invert = 255 - laptop_copy
+laptop_invert
+convert_array_to_image(laptop_invert, 'laptop_invert_image')
