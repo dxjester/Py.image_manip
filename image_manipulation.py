@@ -38,10 +38,23 @@ class image_file:
     
     def display_image(self):
         self.image_data.show()
+    
+    def convert_array_to_image(self, array, save_filename):
+        convert_image = PIL.Image.fromarray(array, 'RGB')
+        filename = save_filename + '.jpg'
+        path = '/image_files/' + filename
+        convert_image.save(path)
         
     def return_array(self):
         return self.image_array
     
+    
+# 1.3: Function Declaration --------------------------------------------------#
+def convert_array_to_image(array, save_filename):
+    convert_image = PIL.Image.fromarray(array, 'RGB')
+    filename = save_filename + '.jpg'
+    path = '/image_files/' + filename
+    convert_image.save(filename)
 #----------------------------------- START -----------------------------------#
 #----------------------- PHASE 2: Program Execution --------------------------#
 #-----------------------------------------------------------------------------#
@@ -57,11 +70,7 @@ len(laptop_origin)
 
 # copy the original laptop origin
 laptop_copy = laptop_origin.copy()
-laptop_copy
-
-laptop_copy_image = PIL.Image.fromarray(laptop_copy, 'RGB')
-laptop_copy_image.save('laptop_copy.jpg')
-laptop_copy_image.show()
+convert_array_to_image(laptop_copy, 'laptop_copy_image')
 
 # flip image upside down
 laptop_trans = laptop_copy[::-1]
