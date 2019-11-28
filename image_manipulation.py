@@ -49,5 +49,24 @@ class image_file:
 laptop = image_file('laptop.jpg', 'jpg') # import 'laptop.jpg' file in local directory
 laptop.display_image() # display the image
 
-laptop_array = laptop.return_array()
+laptop_origin = laptop.return_array() # store array in local variable
+laptop_origin
 
+laptop_x_length, laptop_y_length,laptop_z_length = laptop_origin.shape # shape is (3024, 4032, 3)
+len(laptop_origin)
+
+# copy the original laptop origin
+laptop_copy = laptop_origin.copy()
+laptop_copy
+
+laptop_copy_image = PIL.Image.fromarray(laptop_copy, 'RGB')
+laptop_copy_image.save('laptop_copy.jpg')
+laptop_copy_image.show()
+
+# flip image upside down
+laptop_trans = laptop_copy[::-1]
+laptop_trans
+
+laptop_trans = PIL.Image.fromarray(laptop_trans, 'RGB')
+laptop_trans.save('laptop_trans.jpg')
+laptop_trans.show()
