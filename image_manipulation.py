@@ -12,7 +12,7 @@ VERSION: 1.0
 #--------------------------- PHASE 1: Program Setup --------------------------#
 #-----------------------------------------------------------------------------#
 
-# 1.1: Module import ---------------------------------------------------------#
+# 1.0: Module import ---------------------------------------------------------#
 # import the required modules
 import pandas as pd
 import numpy as np
@@ -27,7 +27,7 @@ import plot_functions as pf
 # from collections import Counter
 # from string import punctuation
 
-# 1.2: Class Declaration -----------------------------------------------------#
+# 1.1: Class Declaration -----------------------------------------------------#
 class image_file: 
     
     def __init__ (self, filename, file_ext):
@@ -49,16 +49,19 @@ class image_file:
         return self.image_array
     
     
-# 1.3: Function Declaration --------------------------------------------------#
+# 1.2: Function Declaration --------------------------------------------------#
 def convert_array_to_image(array, save_filename):
     convert_image = PIL.Image.fromarray(array, 'RGB')
     filename = save_filename + '.jpg'
     path = '/image_files/' + filename
     convert_image.save(filename)
+
+
 #----------------------------------- START -----------------------------------#
 #----------------------- PHASE 2: Program Execution --------------------------#
 #-----------------------------------------------------------------------------#
-        
+
+# 2.0: Import laptop.jpg file and retrieve administrative information --------#          
 laptop = image_file('laptop.jpg', 'jpg') # import 'laptop.jpg' file in local directory
 laptop.display_image() # display the image
 
@@ -68,14 +71,16 @@ laptop_origin
 laptop_x_length, laptop_y_length,laptop_z_length = laptop_origin.shape # shape is (3024, 4032, 3)
 len(laptop_origin)
 
+
+# 2.1: Image manipulation ----------------------------------------------------#
 # copy the original laptop origin
 laptop_copy = laptop_origin.copy()
 convert_array_to_image(laptop_copy, 'laptop_copy_image')
 
+
 # flip image upside down
 laptop_trans = laptop_copy[::-1]
-laptop_trans
+convert_array_to_image(laptop_trans, 'laptop_trans_image')
 
-laptop_trans = PIL.Image.fromarray(laptop_trans, 'RGB')
-laptop_trans.save('laptop_trans.jpg')
-laptop_trans.show()
+
+
