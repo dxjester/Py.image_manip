@@ -23,7 +23,7 @@ import time
 import datetime
 
 import matplotlib.pyplot as plt
-import plot_functions as pf
+
 # from collections import Counter
 # from string import punctuation
 
@@ -85,11 +85,13 @@ convert_array_to_image(laptop_trans, 'laptop_trans_image')
 
 # invert the colors
 laptop_invert = 255 - laptop_copy
+plt.figure(figsize = (10,8))
 plt.imshow(laptop_invert, cmap = plt.get_cmap('gray'))
 convert_array_to_image(laptop_invert, 'laptop_invert_image')
 
 # convert to grayscale
 laptop_grayscale = np.dot(laptop_copy[...,:3], [0.299, 0.587, 0.144])
+plt.figure(figsize = (10,8))
 plt.imshow(laptop_grayscale, cmap = plt.get_cmap('gray'))
 
 convert_array_to_image(laptop_grayscale, 'laptop_grayscale_image')
