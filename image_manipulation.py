@@ -56,7 +56,12 @@ def convert_array_to_image(array, save_filename):
     path = '/image_files/' + filename
     convert_image.save(filename)
     
-def flatten(array, flat_category):
+def flatten(image_array, flat_category):
+    if (flat_category = 'F') or (flat_category = 'f'):
+        image_flat = image_array.flatten('F')
+    else:
+        image_flat = image_array.flatten()
+    return image_flat
     
 
 
@@ -72,16 +77,15 @@ laptop_origin = laptop.return_array() # store array in local variable
 laptop_origin.shape
 
 # flatten array by row
-laptop_flat_col  = laptop_origin.flatten()
-laptop_flat_col
+laptop_flat_row  = laptop_origin.flatten()
+laptop_flat_row
 
 # flatten array by column
-laptop_flat_row  = laptop_origin.flatten('F')
-laptop_flat_row
+laptop_flat_col  = laptop_origin.flatten('F')
+laptop_flat_col
 
 laptop_x_length, laptop_y_length,laptop_z_length = laptop_origin.shape # shape is (3024, 4032, 3)
 len(laptop_origin)
-
 
 
 
