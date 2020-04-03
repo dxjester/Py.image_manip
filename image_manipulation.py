@@ -55,10 +55,13 @@ def convert_array_to_image(array, save_filename):
     filename = save_filename + '.jpg'
     path = '/image_files/' + filename
     convert_image.save(filename)
+    
+def flatten(array, flat_category):
+    
 
 
 #----------------------------------- START -----------------------------------#
-#----------------------- PHASE 2: Program Execution --------------------------#
+#---------------- PHASE 2: Individual Image Processing -----------------------#
 #-----------------------------------------------------------------------------#
 
 # 2.0: Import laptop.jpg file and retrieve administrative information --------#          
@@ -66,10 +69,20 @@ laptop = image_file('laptop.jpg', 'jpg') # import 'laptop.jpg' file in local dir
 laptop.display_image() # display the image
 
 laptop_origin = laptop.return_array() # store array in local variable
-laptop_origin
+laptop_origin.shape
+
+# flatten array by row
+laptop_flat_col  = laptop_origin.flatten()
+laptop_flat_col
+
+# flatten array by column
+laptop_flat_row  = laptop_origin.flatten('F')
+laptop_flat_row
 
 laptop_x_length, laptop_y_length,laptop_z_length = laptop_origin.shape # shape is (3024, 4032, 3)
 len(laptop_origin)
+
+
 
 
 # 2.1: Image manipulation ----------------------------------------------------#
