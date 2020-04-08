@@ -57,7 +57,7 @@ def convert_array_to_image(array, save_filename):
     convert_image.save(filename)
     
 def flatten(image_array, flat_category):
-    if (flat_category = 'F') or (flat_category = 'f'):
+    if (flat_category == 'F') or (flat_category == 'f'):
         image_flat = image_array.flatten('F')
     else:
         image_flat = image_array.flatten()
